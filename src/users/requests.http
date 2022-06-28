@@ -1,0 +1,24 @@
+
+POST http://localhost:3000/users/
+content-type: application/json
+
+{
+  "email": "jerome.fabricante1@opsolutions.biz",
+  "password": "testpassword123@",
+  "role": "SA",
+  "displayName": "Jerome Fabricante"
+}
+
+### Sign in as an existing user
+POST http://localhost:3000/auth/login
+content-type: application/json
+
+{
+  "email": "jerome.fabricante@opsolutions.biz",
+  "password": "testpassword123@"
+}
+
+
+### Delete User
+DELETE  http://localhost:3000/users/3
+
