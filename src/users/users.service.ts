@@ -1,24 +1,50 @@
-import { Injectable } from '@nestjs/common';
-
-// This should be a real class/interface representing a user entity
-export type User = any;
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from './user.entity';
+import { UserData } from './interfaces/user.interface';
 
 @Injectable()
 export class UsersService {
-    private readonly users = [
-        {
-            userId: 1,
-            username: 'john',
-            password: 'changeme',
-        },
-        {
-            userId: 2,
-            username: 'maria',
-            password: 'guess',
-        },
-    ];
+    constructor(@InjectRepository(User) private repo: Repository<User>) {}
 
-    async findOne(username: string): Promise<User | undefined> {
-        return this.users.find(user => user.username === username);
+    async create(userData: UserData): Promise<UserData> {
+        const user = await this.repo.create(userData);
+    
+        return this.repo.save(user);
+    }
+    
+    findOne(id: number): Promise<UserData> {
+        if (!id) {
+            return null;
+        }
+
+        return this.repo.findOneBy({id: id});
+    }
+
+    find(email: string): Promise<UserData[]> {
+        return this.repo.findBy({ email: email });
+    }
+
+    async update(id: number, attrs: Partial<User>) {
+        const user = await this.findOne(id);
+
+        if (!user) {
+            throw new NotFoundException('User not found');
+        }
+
+        Object.assign(user, attrs);
+
+        return this.repo.save(user);
+    }
+
+    async remove(id: number) {
+        const user = await this.findOne(id);
+
+        if (!user) {
+            throw new NotFoundException('User not found');
+        }
+        
+        return this.repo.remove(<User>user);
     }
 }
