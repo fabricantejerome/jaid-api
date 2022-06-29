@@ -1,6 +1,15 @@
 import { Expose } from 'class-transformer';
 
 export class UserDto {
-  @Expose()
-  token: string;
+    @Expose()
+    id: string;
+
+    @Expose()
+    email: string;
+
+    @Expose()
+    displayName: string;
+
+    @Expose()
+    role: string;
 }

@@ -8,6 +8,10 @@ import { UserData } from './interfaces/user.interface';
 export class UsersService {
     constructor(@InjectRepository(User) private repo: Repository<User>) {}
 
+    findAll(): Promise<UserData[]> {
+        return this.repo.find();
+    }
+
     async create(userData: UserData): Promise<UserData> {
         const user = await this.repo.create(userData);
     

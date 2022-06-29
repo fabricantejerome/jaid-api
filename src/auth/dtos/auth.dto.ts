@@ -8,9 +8,9 @@ export interface User {
 }
 
 export class AuthDto {
-  @Expose()
-  token?: string;
+    @Expose()
+    token?: string;
 
-  @Expose()
-  user: User;
+    @Expose()
+    user: User;
 }
