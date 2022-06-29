@@ -58,14 +58,14 @@ export class AuthService {
         const hash = (await scrypt(password, salt, 32)) as Buffer;
     
         if (storedHash !== hash.toString('hex')) {
-          throw new BadRequestException('bad password');
+          throw new BadRequestException('Email or Password is incorrect');
         }
     
         return user;
     }
 
     login(user: UserData) {
-        const payload = { username: user.email, sub: user.id, role: user.role, displayName: user.displayName };
+        const payload = { email: user.email, id: user.id, role: user.role, displayName: user.displayName };
 
         return {
             token: this.jwtService.sign(payload),
