@@ -8,17 +8,17 @@ import { LoanData } from './interfaces/loan.interface';
 export class LoansService {
     constructor(@InjectRepository(Loan) private repo: Repository<Loan>) {}
 
-    findAll(): Promise<LoanData[]> {
+    findAll() {
         return this.repo.find();
     }
 
-    async create(loadData: LoanData): Promise<LoanData> {
-        const loan = await this.repo.create(loadData);
+    async create(loanData: Partial<LoanData>) {
+        const loan = await this.repo.create(loanData);
     
         return this.repo.save(loan);
     }
     
-    findOne(id: number): Promise<LoanData> {
+    findOne(id: number) {
         if (!id) {
             return null;
         }
@@ -36,7 +36,7 @@ export class LoansService {
         return this.repo.remove(<Loan>loan);
     }
 
-    async update(id: number, attrs: Partial<LoanData>) {
+    async update(id: number, attrs: Partial<Loan>) {
         let loan = await this.findOne(id);
 
         if (!loan) {

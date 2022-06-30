@@ -1,0 +1,10 @@
+### Add new loan details
+POST http://localhost:3000/loan-details/
+content-type: application/json
+
+{
+    "paymentDate": "2022-06-30",
+    "amount": 1000,
+    "loanId": 1,
+    "approvedBy": "Jerome Fabricante"
+}

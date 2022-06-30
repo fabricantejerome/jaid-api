@@ -4,8 +4,10 @@ import {
     AfterUpdate,
     Entity,
     Column,
-    PrimaryGeneratedColumn
+    PrimaryGeneratedColumn,
+    OneToMany
 } from 'typeorm';
+import { LoanDetails } from 'src/loan-details/loan-details.entity';
   
 @Entity()
 export class Loan {
@@ -41,6 +43,9 @@ export class Loan {
 
     @Column({ default: true })
     isApproved: boolean;
+
+    @OneToMany(() => LoanDetails, (loanDetails) => loanDetails.loan, { eager: true })
+    loanDetails: LoanDetails[];
   
     @AfterInsert()
     logInsert() {

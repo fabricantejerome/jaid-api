@@ -19,6 +19,9 @@ content-type: application/json
 ### Get all the loans
 GET http://localhost:3000/loans/
 
+### Get single entry
+GET  http://localhost:3000/loans/1
+
 ### Update loans
 PATCH  http://localhost:3000/loans/1
 content-type: application/json
