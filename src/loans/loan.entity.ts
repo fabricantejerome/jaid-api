@@ -44,17 +44,17 @@ export class Loan {
   
     @AfterInsert()
     logInsert() {
-      console.log('Inserted User with id', this.id);
+      console.log('Inserted Loan with id', this.id);
     }
   
     @AfterUpdate()
     logUpdate() {
-      console.log('Updated User with id', this.id);
+      console.log('Updated Loan with id', this.id);
     }
   
     @AfterRemove()
     logRemove() {
-      console.log('Removed User with id', this.id);
+      console.log('Removed Loan with id', this.id);
     }
 }
   
