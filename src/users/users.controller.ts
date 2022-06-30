@@ -8,7 +8,6 @@ import { UserData } from './interfaces/user.interface';
 import { UsersService } from './users.service';
 
 @Controller('users')
-@UseGuards(JwtAuthGuard)
 @Serialize(UserDto)
 export class UsersController {
     constructor(
@@ -16,6 +15,7 @@ export class UsersController {
         private authService: AuthService
     ) {}
 
+    @UseGuards(JwtAuthGuard)
     @Get()
     fetch(): Promise<UserData[]> {
         return this.usersService.findAll();
@@ -30,6 +30,7 @@ export class UsersController {
         return user;
     }
 
+    @UseGuards(JwtAuthGuard)
     @Delete('/:id')
     removeUser(@Param('id') id: string) {
         return this.usersService.remove(parseInt(id));

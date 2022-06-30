@@ -3,7 +3,7 @@ POST http://localhost:3000/users/
 content-type: application/json
 
 {
-  "email": "jerome.fabricante1@opsolutions.biz",
+  "email": "jerome.fabricante@opsolutions.biz",
   "password": "testpassword123@",
   "role": "SA",
   "displayName": "Jerome Fabricante"
@@ -18,6 +18,9 @@ content-type: application/json
   "password": "testpassword123@"
 }
 
+### Fetch all the users
+GET http://localhost:3000/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Implcm9tZS5mYWJyaWNhbnRlQG9wc29sdXRpb25zLmJpeiIsImlkIjo3LCJyb2xlIjoiU0EiLCJkaXNwbGF5TmFtZSI6Ikplcm9tZSBGYWJyaWNhbnRlIiwiaWF0IjoxNjU2NDcwMzkxLCJleHAiOjE2NTY0NzA0NTF9.oYiB-_f7p0dlxCETw-HsoUvpjxgcIeYJnx-_A5Hh-ys
 
 ### Delete User
 DELETE  http://localhost:3000/users/3

@@ -1,0 +1,40 @@
+### Add new loan
+POST http://localhost:3000/loans/
+content-type: application/json
+
+{
+    "address": "Silang, Cavite",
+    "amount": 20000,
+    "duration": "12 Months",
+    "email": "jerome.fabricante@opsolutions.biz",
+    "interestRate": 0.25,
+    "loanDate": "2022-06-29",
+    "mobile": "09272612690",
+    "name": "Jerome Fabricante",
+    "totalLoan": 25000,
+    "isApproved": true
+}
+
+
+### Get all the loans
+GET http://localhost:3000/loans/
+
+### Update loans
+PATCH  http://localhost:3000/loans/1
+content-type: application/json
+
+{
+    "address": "Tartaria, Silang Cavite",
+    "amount": 20000,
+    "duration": "12 Months",
+    "email": "jerome.fabricante@opsolutions.biz",
+    "interestRate": 0.25,
+    "loanDate": "2022-06-29",
+    "mobile": "09272612690",
+    "name": "Jerome Fabricante",
+    "totalLoan": 20000,
+    "isApproved": true
+}
+
+### Remove Loan
+DELETE  http://localhost:3000/loans/4
