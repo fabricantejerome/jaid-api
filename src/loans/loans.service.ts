@@ -9,7 +9,11 @@ export class LoansService {
     constructor(@InjectRepository(Loan) private repo: Repository<Loan>) {}
 
     findAll() {
-        return this.repo.find();
+        return this.repo.find({
+            order: {
+                name: "ASC",
+            },
+        });
     }
 
     async create(loanData: Partial<LoanData>) {
