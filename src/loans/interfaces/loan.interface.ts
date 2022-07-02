@@ -9,5 +9,6 @@ export interface LoanData {
     loanDate: string;
     mobile: string;
     totalLoan: number;
+    isApproved?: boolean;
 }
   
